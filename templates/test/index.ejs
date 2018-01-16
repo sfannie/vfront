@@ -1,0 +1,22 @@
+<@- include('../include/_header.ejs',
+  {
+    data:{
+      title:"test",
+      // 引入样式，支持 string/array  "css/app.css" ["css/app.css","css/app.css"]
+      css:"css/test.css"
+    }
+  });
+ @>
+<body>
+  <div id="app">
+    <h1>{{title}}</h1>
+    <p>{{brief}}</p>
+    <p><img style="width:100%;" src="../images/1.jpg" alt="" /></p>
+    <ul>
+      <li v-for="item in list">
+          <h3>{{item.title}}</h3>
+          <p>{{item.date}}</p>
+      </li>
+    </ul>
+  </div>
+<@- include('../include/_footer.ejs',{data:{main:"modules/test/index"}}); @>

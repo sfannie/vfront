@@ -1,0 +1,13 @@
+<script type="text/javascript" src="<@= Utils.cdn((ctx || "")+'/libs/require.js?v='+_build.ts) @>"></script>
+<script type="text/javascript" src="<@= Utils.cdn((ctx || "")+'/libs/require-config.js?v='+_build.ts) @>"></script>
+  <script type="text/javascript">
+            requirejs.config({baseUrl:"<@= ctx @>"});
+            <@ if(data.main){ @>
+                <@ if(data.main instanceof Array){ _.each(data.main,function(item){@>
+                require(["<@= item @>"]);
+                <@ })}else{ @> 
+                    require(["<@= data.main @>"]);
+                <@} @>
+            <@ }else{ @>require(["C"])<@ } @>
+  </script>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <title><@= data.title @></title>
+    <link rel="icon" href="#" type="image/x-icon">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <!--<meta http-equiv="Cache-Control" content="max-age=2592000" />-->
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="applicable-device" content="mobile">
+    <@ if(data.css){ @>
+        <@ if(data.css instanceof Array){ _.each(data.css,function(item){@>
+      <link rel="stylesheet" id="app-css-link" href="<@= Utils.cdn((ctx || "")+'/'+ item +'?v='+_build.ts) @>" type="text/css" />
+        <@ })}else{ @>
+      <link rel="stylesheet" id="app-css-link" href="<@= Utils.cdn((ctx || "")+'/'+ data.css +'?v='+_build.ts) @>" type="text/css" />
+        <@} @>
+    <@ }else{ @>
+    <link rel="stylesheet" id="app-css-link" href="<@= Utils.cdn((ctx || "")+'/css/app.css?v='+_build.ts) @>" type="text/css" />
+    <@ } @>
+    <script type="text/javascript" src="<@= Utils.cdn((ctx || "")+'/libs/flexible.js?v='+_build.ts) @>"></script>
+  <script type="text/javascript">
+    var _app = {
+      env : "<@= _build.env @>",
+      ctx : "<@= ctx @>",
+      version:"<@= _build.version @>",
+      ts:"<@= _build.ts @>",
+      name:"app"
+    };
+  </script>
+  
+</head>

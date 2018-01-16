@@ -1,0 +1,36 @@
+{
+  "name": "vfront",
+  "version": "0.1.0",
+  "description": "for webfront learning",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \\\"Error: no test specified\\\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {},
+  "keywords": [
+    "vfront"
+  ],
+  "author": "annie",
+  "license": "ISC",
+  "bugs": {},
+  "homepage": "",
+  "devDependencies": {
+    "body-parser": "^1.17.2",
+    "ejs": "^2.5.7",
+    "express": "^4.15.4",
+    "glob": "^7.1.2",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-ejs": "^3.0.1",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-less": "^3.3.2",
+    "gulp-rimraf": "^0.2.1",
+    "gulp-util": "^3.0.8",
+    "gulp-zip": "^4.0.0",
+    "path": "^0.12.7",
+    "request": "^2.81.0",
+    "uglify": "^0.1.5",
+    "underscore": "^1.8.3"
+  }
+}
