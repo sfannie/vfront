@@ -1,29 +1,23 @@
 define([
     'zepto',
-    'vue',
+    'vue', 
+    'modules/common/svgCommon',
     'iScroll'
-  ], function($, Vue, IScroll){
+  ], function($, Vue, C, IScroll){
 
     var app = new Vue({
+
         data: function(){
             return {
-              iScroll: null,
-              title: "Hello World",
-              brief: 'Have a good time!',
-               list: [{
-                  id:'01',
-                  title: 'Hello World!',
-                  date: '2017-09-11'
-               },{
-                  id:'01',
-                  title: 'Hello World!',
-                  date: '2017-09-11'
-               }]
+              title: "SVG",
+              iScroll: null
             };
         },
+
         created: function(){
-            $('#wrapper').height($(window).height() - $('#header').height());
+          $('#wrapper').height($(window).height() - $('#header').height());
         },
+
         mounted: function(){
             if(!this.iScroll){
                 this.iScroll = new IScroll('#wrapper', {
@@ -37,8 +31,11 @@ define([
               this.iScroll.refresh();
             }
         },
-        methods: {
 
+        methods: {
+            drawLine: function(){
+              
+            }
         }
     }).$mount("#app");
 
