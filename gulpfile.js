@@ -20,6 +20,16 @@ var concat = require('gulp-concat');
 //js压缩
 var uglify = require('gulp-uglify');
 
+//同步执行任务
+var runSequence = require('run-sequence');
+
+//文件遍历
+var fs = require('fs');
+var path = require('path');
+
+//构建requireJS模块
+var amdOptimize = require("amd-optimize");
+
 
 
 // 设置路径
@@ -55,9 +65,29 @@ _.extend(Config, {
 
     //css文件压缩路径
     cssmin_src: Config.dest +'/css/*',
-    cssmin_dest: Config.dest + '/css/'
+    cssmin_dest: Config.dest + '/css/',
 
-    //优化js路径
+    //js压缩源路径
+    uglifyjs_src: [
+        Config.dest + '/modules*/**/*.js',
+        Config.dest + '/js*/**/*.js',
+        Config.dest + '/libs*/require-config.js'
+    ],
+    uglifyjs_dest: Config.dest,
+
+    //js合并源路径
+    concatjs_modules_src: Config.src + '/www/modules',
+    concatjs_modules_dest: Config.dest + '/modules',
+    concat_exclude_modules: [],
+    //优化排除公共库
+    optimize_exclude: [],
+    //排除公共库
+    exclude: {
+        'zepto': 'empty:',
+        'Chart': 'empty:',
+        'vue': 'empty:'
+    }
+
 });
 
 // 1. 清除目录
@@ -85,7 +115,7 @@ gulp.task('copy', function(){
 // 4. ejs编译
 gulp.task('ejs', function(){
     gulp.src(Config.ejs_src)
-      .pipe(ejs({ msg: 'Hello Gulp!'}, {}, { ext: '.html' }))
+      .pipe(ejs({ msg: 'ejs OK!'}, {}, { ext: '.html' }))
       .pipe(gulp.dest(Config.ejs_dest));
 });
 
@@ -96,13 +126,75 @@ gulp.task('cssmin', function(){
         .pipe(gulp.dest(Config.cssmin_dest));
 });
 
-// 6. js 优化、合并
-gulp.task('js_opitimaze', function(){
+// 6. js压缩
+gulp.task('jsmin', function(){
+    gulp.src(Config.uglifyjs_src)
+        .pipe(uglify({})
+        .on("error", gutil.log))
+        .pipe(gulp.dest(Config.uglifyjs_dest));
+});
+
+// 6. js 合并
+gulp.task('js_optimize', function(){
+    var sequence = [];
+    sequence.push(
+        gulp.src(Config.src + '/www/js/**/*.js')
+        .pipe(amdOptimize('C', {
+            configFile: Config.src + '/www/libs/require-config.js',
+            paths: Config.exclude,
+            exclude: Config.optimize_exclude
+        }))
+        .pipe(concat('common.js'))
+        .pipe(gulp.dest(Config.dest + '/js/common'))
+    );
+
+    var files = fs.readdirSync(Config.concatjs_modules_src);
+    var dirs = [];
+    sequence = [];
+
+    _.each(files, function(fn) {
+        var fname = Config.concatjs_modules_src + '/' + fn;
+        var stat = fs.lstatSync(fname);
+        var concatModulesIndexs;
+        if (Config.concat_exclude_modules.indexOf('!' + fname) === -1) {
+            if (stat.isDirectory() == true) {
+                 concatModulesIndexs = fs.readdirSync(fname + '/');
+                _.each(concatModulesIndexs, function(indexName) {
+                    if (/\.js$/.test(indexName)) {
+                        sequence.push(
+                            // 优化common
+                            gulp.src(Config.src + "/www/modules/**/*.js")
+                            .pipe(amdOptimize("modules/" + fn + "/" + indexName.substring(0, indexName.indexOf('.js')), {
+                                configFile: Config.src + "/www/libs/require-config.js",
+                                paths: Config.exclude,
+                                exclude: Config.optimize_exclude.concat(["C"])
+                            }))
+                            //.pipe(handleEnv())
+                            // 合并
+                            .pipe(concat(indexName))
+                            // .pipe(uglify().on("error", gutil.log))
+                            // 输出
+                            .pipe(gulp.dest(Config.concat_modules_dest + "/" + fn))
+                        )
+                    }
+                });
+            }
+        }
+    });
+
+    return merge.apply(this, sequence);
 
 });
 
 // 7. 构建
-gulp.task('default', ['clean', 'less', 'copy', 'ejs', 'cssmin']);
+gulp.task('default', function(cb){
+    runSequence(
+        'clean',
+        ['less', 'copy', 'ejs', 'cssmin', 'jsmin'],
+        'watch',
+        cb
+    );
+});
 
 // 8. 监听自动编译
 gulp.task('watch', function(){

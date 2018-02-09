@@ -1,4 +1,1 @@
-//
-define(['zepto'], function($){
-    
-});
+define(["zepto"],function(e){});

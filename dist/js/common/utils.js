@@ -1,10 +1,1 @@
-/*
- * Utils
- */
-define(['zepto'], function($){
-
-  var utils = {};
-
-  return utils;
-
-});
+define(["zepto"],function(e){return{}});
