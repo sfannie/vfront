@@ -1,1 +1,17 @@
-define(["zepto","js/component/baseDialog"],function(n,e){var o={baseDialog:e,tip:function(n,e){}};return o});
+/*
+ * UI
+ */
+define(['zepto','js/component/baseDialog'], function($, baseDialog){
+
+  var ui = {
+    baseDialog: baseDialog
+  };
+
+  //提示信息
+  ui.tip = function(msg, times){
+      
+  };
+
+  return ui;
+
+});

@@ -1,1 +1,17 @@
-define(["zepto"],function(n){return{baseDialog:function(n){},init:function(){}}});
+/*
+  *  对话框
+ */
+ define(['zepto'], function($){
+
+    var baseDialog = function(opt){
+
+    };
+
+    return {
+        baseDialog: baseDialog,
+        init: function(){
+
+        }
+    };
+
+  });

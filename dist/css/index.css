@@ -1,1 +1,132 @@
-.iScrollHorizontalScrollbar,.iScrollVerticalScrollbar{z-index:9999;bottom:.04rem;overflow:hidden;position:absolute}.list,body,li,ul{padding:0;margin:0}#header,.list li{line-height:.8rem}*{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}html{-ms-touch-action:none}body,li,ul{border:0}body{font-size:12px;font-family:ubuntu,helvetica,arial;overflow:hidden}#header{width:100%;height:.8rem;background:#CD235C;padding:0;color:#eee;font-size:.4rem;text-align:center;font-weight:700}#wrapper{-webkit-box-flex:1;-ms-flex:1 0 auto;-moz-box-flex:1;box-flex:1;width:100%;background:#eee;overflow:hidden}.scroller{-webkit-tap-highlight-color:transparent;width:100%;-webkit-transform:translateZ(0);-moz-transform:translateZ(0);-ms-transform:translateZ(0);-o-transform:translateZ(0);transform:translateZ(0);-webkit-touch-callout:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-text-size-adjust:none;-moz-text-size-adjust:none;-ms-text-size-adjust:none;-o-text-size-adjust:none;text-size-adjust:none}.iScrollHorizontalScrollbar{height:.06rem;left:.04rem;right:.04rem}.iScrollHorizontalScrollbar.iScrollBothScrollbars{right:.36rem}.iScrollVerticalScrollbar{width:.06rem;top:.04rem;right:.04rem}.iScrollVerticalScrollbar.iScrollBothScrollbars{bottom:18px}.iScrollIndicator{position:absolute;background:rgba(0,0,0,.3);border-width:1px;border-style:solid;border-color:rgba(0,0,0,.1);border-radius:.12rem}.iScrollHorizontalScrollbar .iScrollIndicator{height:100%;background:-moz-linear-gradient(left,rgba(0,0,0,.3) 0,rgba(0,0,0,.4) 50%,rgba(0,0,0,.3) 100%);background:-webkit-linear-gradient(left,rgba(0,0,0,.3) 0,rgba(0,0,0,.4) 50%,rgba(0,0,0,.3) 100%);background:-o-linear-gradient(left,rgba(0,0,0,.3) 0,rgba(0,0,0,.4) 50%,rgba(0,0,0,.3) 100%);background:-ms-linear-gradient(left,rgba(0,0,0,.3) 0,rgba(0,0,0,.4) 50%,rgba(0,0,0,.3) 100%);background:linear-gradient(to right,rgba(0,0,0,.3) 0,rgba(0,0,0,.4) 50%,rgba(0,0,0,.3) 100%)}.iScrollVerticalScrollbar .iScrollIndicator{width:100%;background:-moz-linear-gradient(top,rgba(0,0,0,.3) 0,rgba(0,0,0,.4) 50%,rgba(0,0,0,.3) 100%);background:-webkit-linear-gradient(top,rgba(0,0,0,.3) 0,rgba(0,0,0,.5) 50%,rgba(0,0,0,.3) 100%);background:-o-linear-gradient(top,rgba(0,0,0,.3) 0,rgba(0,0,0,.4) 50%,rgba(0,0,0,.3) 100%);background:-ms-linear-gradient(top,rgba(0,0,0,.3) 0,rgba(0,0,0,.4) 50%,rgba(0,0,0,.3) 100%);background:linear-gradient(to bottom,rgba(0,0,0,.3) 0,rgba(0,0,0,.4) 50%,rgba(0,0,0,.3) 100%)}.list{list-style:none;text-align:left;width:500}.list li{padding:0 .2rem;height:.8rem;border-bottom:1px solid #ccc;border-top:1px solid #fff;background-color:#fafafa;font-size:.28rem}.box,.list .active{background-color:#fff}
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+html {
+  -ms-touch-action: none;
+}
+body,
+ul,
+li {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+body {
+  font-size: 12px;
+  font-family: ubuntu, helvetica, arial;
+  overflow: hidden;
+  /* this is important to prevent the whole page to bounce */
+}
+#header {
+  width: 100%;
+  height: 0.8rem;
+  line-height: 0.8rem;
+  background: #CD235C;
+  padding: 0;
+  color: #eee;
+  font-size: 0.4rem;
+  text-align: center;
+  font-weight: bold;
+}
+#wrapper {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  width: 100%;
+  background: #eee;
+  overflow: hidden;
+}
+.scroller {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  width: 100%;
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-text-size-adjust: none;
+  -moz-text-size-adjust: none;
+  -ms-text-size-adjust: none;
+  -o-text-size-adjust: none;
+  text-size-adjust: none;
+}
+/* Styled scrollbars */
+.iScrollHorizontalScrollbar {
+  position: absolute;
+  z-index: 9999;
+  height: 0.06rem;
+  left: 0.04rem;
+  right: 0.04rem;
+  bottom: 0.04rem;
+  overflow: hidden;
+}
+.iScrollHorizontalScrollbar.iScrollBothScrollbars {
+  right: 0.36rem;
+}
+.iScrollVerticalScrollbar {
+  position: absolute;
+  z-index: 9999;
+  width: 0.06rem;
+  bottom: 0.04rem;
+  top: 0.04rem;
+  right: 0.04rem;
+  overflow: hidden;
+}
+.iScrollVerticalScrollbar.iScrollBothScrollbars {
+  bottom: 18px;
+}
+.iScrollIndicator {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.3);
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.1);
+  border-radius: 0.12rem;
+}
+.iScrollHorizontalScrollbar .iScrollIndicator {
+  height: 100%;
+  background: -moz-linear-gradient(left, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.3) 100%);
+  background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.3) 100%);
+  background: -o-linear-gradient(left, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.3) 100%);
+  background: -ms-linear-gradient(left, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.3) 100%);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.3) 100%);
+}
+.iScrollVerticalScrollbar .iScrollIndicator {
+  width: 100%;
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.3) 100%);
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 50%, rgba(0, 0, 0, 0.3) 100%);
+  background: -o-linear-gradient(top, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.3) 100%);
+  background: -ms-linear-gradient(top, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.3) 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.3) 100%);
+}
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  text-align: left;
+  width: 500;
+}
+.list li {
+  padding: 0 0.2rem;
+  height: 0.8rem;
+  line-height: 0.8rem;
+  border-bottom: 1px solid #ccc;
+  border-top: 1px solid #fff;
+  background-color: #fafafa;
+  font-size: 0.28rem;
+}
+.list .active {
+  background-color: #fff;
+}
+.box {
+  background-color: #fff;
+}
