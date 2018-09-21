@@ -5,6 +5,7 @@ define([
   ], function($, Vue, C){
 
     var app = new Vue({
+
         data: function(){
             return {
               title: "Hello World",

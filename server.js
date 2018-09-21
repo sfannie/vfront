@@ -21,8 +21,10 @@ app.use('/modules', express.static('www/modules'));
 
 //路径
 var CONTEXT_PATH = "/www",
+
 //构建时间
 BUILD_TIMESTAMP = gutil.date(new Date(), "yyyymmddHHMMss"),
+
 //环境
 env = "DEV";
 
@@ -30,6 +32,7 @@ pkg.build = BUILD_TIMESTAMP;
 
 //设置模板路径
 app.set('views', path.join(__dirname, 'templates'));
+
 //设置自定义模板
 app.engine('ejs', function() {
   ejs.renderFile(arguments[0], {
@@ -45,6 +48,7 @@ app.engine('ejs', function() {
     data: {}
   }, arguments[1], arguments[2]);
 });
+
 //设置模板引擎
 app.set('view engine', 'ejs');
 ejs.delimiter = '@';

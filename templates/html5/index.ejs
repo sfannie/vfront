@@ -1,7 +1,7 @@
 <@- include('../include/_header.ejs',
   {
     data:{
-      title:"html5 新元素",
+      title:"demo",
       // 引入样式，支持 string/array  "css/app.css" ["css/app.css","css/app.css"]
       css:"css/index.css"
     }
@@ -29,13 +29,14 @@
 
   <script type="text/x-template" id="list-tpl">
       <ul>
-        <li class="box" v-for="item in list">
+        <li class="box" v-for="(item, index) in list"  v-on:click="tap(index)">
           <details>
             <summary>{{item.title}}</summary>
-            <p>sss</p>
+            <p>{{item.brief}}</p>
           </details>
         </li>
       </ul>
   </script>
 
+</body>
 <@- include('../include/_footer.ejs',{data:{main:"modules/html5/index"}}); @>

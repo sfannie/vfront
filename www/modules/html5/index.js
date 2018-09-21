@@ -10,7 +10,7 @@ define([
 
         data: function(){
             return {
-              title: "html5 新元素",
+              title: "demo",
               iScroll: null
             };
         },
@@ -28,6 +28,7 @@ define([
                 this.iScroll = new IScroll('#wrapper', {
                   scrollbars: true,
                   mouseWheel: true,
+                  click: true,
                   interactiveScrollbars: true,
                   shrinkScrollbars: 'scale',
                   fadeScrollbars: true
