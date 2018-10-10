@@ -1,0 +1,28 @@
+<@- include('../include/_header.ejs',
+  {
+    data:{
+      title:"D3",
+      // 引入样式，支持 string/array  "css/app.css" ["css/app.css","css/app.css"]
+      css:"css/index.css"
+    }
+  });
+ @>
+<body>
+  <div id="app">
+    <div id="header">D3</div>
+    
+    <div id="wrapper">
+        <div class="scroller">
+              <ul class="list">
+                  <li>
+                    <h4 id="demo-0" @click="draw('text', $event)">文本</h4>
+                  </li>
+                  <li>
+                    <h4 id="demo-1" @click="draw('pie', $event)">饼图</h4>
+                  </li>
+              </ul>
+        </div>
+    </div>
+
+  </div>
+<@- include('../include/_footer.ejs',{data:{main:"modules/d3/index"}}); @>

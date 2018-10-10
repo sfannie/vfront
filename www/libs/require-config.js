@@ -59,7 +59,11 @@
 			// plugins
 			swiper: 'libs/swiper.min',
 			//iscroll
-			iScroll: 'libs/iscroll'
+			iScroll: 'libs/iscroll',
+			//d3
+			d3: 'libs/d3.v5.min',
+			//snap.svg
+			snap: 'libs/snap.svg-min'
 			
 		},
 		map: map,

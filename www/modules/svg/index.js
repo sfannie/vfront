@@ -2,20 +2,26 @@ define([
     'zepto',
     'vue', 
     'modules/common/svgCommon',
-    'iScroll'
-  ], function($, Vue, C, IScroll){
+    'iScroll',
+    'modules/svg/component/vChart'
+  ], function($, Vue, C, IScroll,VChart){
 
     var app = new Vue({
 
         data: function(){
             return {
               title: "SVG",
-              iScroll: null
+              iScroll: null,
+              wHeight: $(window).height() - $('#header').height()
             };
         },
 
+        components: {
+          'v-chart': VChart
+        },
+
         created: function(){
-          $('#wrapper').height($(window).height() - $('#header').height());
+          $('#wrapper').height(this.wHeight);
         },
 
         mounted: function(){
