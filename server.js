@@ -11,6 +11,9 @@ var ejs = require('ejs'),
 var path = require('path'),
     gutil = require('gulp-util');
 
+var expressLess = require('express-less');
+ app.use('/www/css', expressLess(__dirname + '/www/less'));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
   

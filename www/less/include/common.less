@@ -1,5 +1,38 @@
 
-#header{
-  background-color: orange;
-  height: 0.9rem;
+// 变量
+
+@base: #3b527d;
+@light: lighten(@base, 30%);
+@dark: darken(@base, 30%);
+@pink: #f2578a;
+@green: #44d584;
+@base-url: '../images/huodong/';  // @{name}
+@width: 3rem;
+
+// 混合
+.border-radius(@radius: 0.2rem) {
+  border-radius: @radius;
+  -webkit-border-radius: @radius;
+  -moz-border-radius: @radius;
 }
+
+.flex(){
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.flex-auto{
+  .flex();
+  -webkit-justify-content: center;    
+  -moz-justify-content: center;    
+  -ms-justify-content: center;    
+  justify-content: center;    
+  -webkit-align-items: center;    
+  -moz-align-items: center;    
+  -ms-align-items: center;    
+  align-items: center;
+}
+
